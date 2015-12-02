@@ -16,6 +16,9 @@ dist: all
 lint: setup
 	npm run lint
 
+plato:
+	npm run plato -r -n -d report src
+
 test: lint
 	npm test
 

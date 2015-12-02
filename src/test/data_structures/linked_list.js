@@ -1,7 +1,8 @@
 'use strict';
 
 var LinkedList = require('../..').DataStructures.LinkedList,
-    assert = require('assert');
+    assert = require('assert'),
+    Comparator = require('../../util/comparator');
 
 describe('LinkedList', function () {
 
@@ -147,6 +148,33 @@ describe('LinkedList', function () {
     });
 
     assert.deepEqual(a, [5, 1, 3, 10, 1000]);
+  });
+
+  it('should find a element', function () {
+    var l = new LinkedList();
+    l.add(5);
+    l.add(1);
+    l.add(3);
+    l.add(10);
+    l.add(1000);
+
+    var key = 1000;
+
+    var a = l.find(function (e) {
+        if (key === e) {
+          return e;
+        };
+      });
+
+    // var a;
+    // l.forEach(function (e) {
+    //   if (key === e) {
+    //     a = e;
+    //     return;
+    //   };
+    // });
+
+    assert.equal(a, 1000 );
   });
 
   it('should throw an error when trying to delete from an empty list',

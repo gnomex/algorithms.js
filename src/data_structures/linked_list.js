@@ -148,4 +148,36 @@ LinkedList.prototype.forEach = function (fn) {
   }
 };
 
+LinkedList.prototype.find = function (fn) {
+  var nodes = this.head;
+
+  for (var i = nodes; i !== null ; i = i.next) {
+    if (!!fn(i.value)) {
+      return i.value;
+    };
+  };
+}
+
+LinkedList.prototype.clone = function (l) {
+  this.forEach(function (n) {
+    l.add(n);
+  })
+};
+
+LinkedList.prototype.contains = function (element) {
+  return this.find(function (e) {
+    if (e === element) {
+      return true;
+    };
+  });
+}
+
+LinkedList.prototype.clone_and_remove_doubles = function (l) {
+  this.forEach(function (n) {
+    if (!l.contains(n))  {
+      l.add(n);
+    }
+  })
+};
+
 module.exports = LinkedList;
